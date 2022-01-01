@@ -85,10 +85,10 @@ calculate_distance(trigger2,echo2);
 distR =dist; //get distance of right sensor
 ```
 
-Since we know the distance between both the sensors, we can now compare it with predefined values and arrive at certain actions. For example if both the hands are placed at a distance of 40 mc then we play/pause the video. Here the word “Play/Pause” will be sent out through serial port
+Since we know the distance between both the sensors, we can now compare it with predefined values and arrive at certain actions. For example if both the hands are placed at a distance of 20 mc then we play/pause the video. Here the word “Play/Pause” will be sent out through serial port
 
 ```ino
-if ((distL >40 && distR>40) && (distL <50 && distR<50)) //Detect both hands
+if ((distL >20 && distR>20) && (distL <30 && distR<30)) //Detect both hands
 {Serial.println("Play/Pause"); delay (500);}
 ```
 
@@ -102,7 +102,7 @@ if ((distR >40 && distR<50) && (distL ==50)) //Detect Right Hand
 {Serial.println("Forward"); delay (500);}
 ```
 
-Foe detailed control of volume and track we use a different methodology so as to prevent false triggers. To control the volume we have to place the left hand approx. At a distance of 15 cm , then you can either move it towards the sensor to decrease the volume of move it away from the sensor to increase the volume. The code for the same is shown below. Based on the action, here the word “Vup” or “Vdown” will be sent out through serial port
+For detailed control of volume and track we use a different methodology so as to prevent false triggers. To control the volume we have to place the left hand approx. At a distance of 15 cm , then you can either move it towards the sensor to decrease the volume of move it away from the sensor to increase the volume. The code for the same is shown below. Based on the action, here the word “Vup” or “Vdown” will be sent out through serial port
 
 ```ino
 //Lock Left - Control Mode
@@ -196,10 +196,10 @@ while 1:
         pyautogui.hotkey('ctrl', 'right') 
 
     if 'Vup' in incoming:
-        pyautogui.hotkey('ctrl', 'down')
+        pyautogui.hotkey('ctrl', 'up')
         
     if 'Vdown' in incoming:
-        pyautogui.hotkey('ctrl', 'up')
+        pyautogui.hotkey('ctrl', 'down')
         
   ```
 
@@ -213,10 +213,6 @@ Make the connections as defined above and upload the Arduino code on your Arduin
 
 Now you can play any movie on your computer using the VLC media player and use your hand to control the movie.
 
-## More Projects
-for more projects in different enginneering fields, please visit our wevbsite:
-https://pixelseg.com/project-contest
-![Screenshot (149)](https://user-images.githubusercontent.com/80456446/124113398-b18b8a00-da6b-11eb-8faf-70db2402673c.png)
 
 
 ## Pixels App 
